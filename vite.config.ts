@@ -9,6 +9,8 @@ export default defineConfig({
     mkcert()
   ],
   server: {
+    // https: false,
+    // host: '192.168.178.32'
     https: true
   },
   envDir: 'environments'

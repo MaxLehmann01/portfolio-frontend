@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  portfolio-frontend:
+    image: maxlehmann01/portfolio-frontend:latest
+    container_name: portfolio-frontend
+    ports:
+      - 3200:3200

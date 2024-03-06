@@ -1,6 +1,17 @@
+import { BrowserRouter } from "react-router-dom"
+import Router from "./components/Router/Router"
+import AlertProvider from "./providers/AlertProvider"
+import LocalStorageProvider from "./providers/LocalStorageProvider"
+
 const App = () => {
   return (
-    <div>Test</div>
+    <BrowserRouter>
+      <LocalStorageProvider>
+        <AlertProvider>
+          <Router />
+        </AlertProvider>
+      </LocalStorageProvider>
+    </BrowserRouter>
   )
 }
 
