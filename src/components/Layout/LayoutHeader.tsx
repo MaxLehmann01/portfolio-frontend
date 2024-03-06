@@ -1,7 +1,6 @@
 import { Code, EmojiPeople, Forum, School } from "@mui/icons-material";
 import NavigationButton from "../Navigation/NavigationButton";
 import NavigationLanguage from "../Navigation/NavigationLanguage";
-import { Divider } from "@mui/material";
 
 const LayoutHeader = () => {
   return (
