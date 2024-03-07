@@ -1,5 +1,3 @@
-import { Paper } from "@mui/material";
-
 const About = () => {
   return (
     <div>About</div>
