@@ -60,7 +60,6 @@ const NavigationLanguage = () => {
           </ListItemIcon>
           <ListItemText>English</ListItemText>
         </MenuItem>
-        
       </Menu>
     </>
   )
