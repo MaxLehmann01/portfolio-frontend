@@ -13,7 +13,7 @@ const Layout = () => {
       <LayoutHeader />
       <div className="h-auto w-full flex-1 relative flex flex-col">
         <LayoutBackground />
-        <div className="h-auto w-full flex-1 z-10">
+        <div className="h-auto w-full flex-1 z-10 py-8 px-[10%]">
           <Outlet />
         </div>
         <LayoutFooter />
