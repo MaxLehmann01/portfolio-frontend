@@ -1,7 +1,7 @@
 import { Divider, IconButton, ListItemIcon, ListItemText, Menu, MenuItem } from "@mui/material";
 import { useState } from "react";
-import LangDE from "../../assets/lang-de.png";
-import LangEN from "../../assets/lang-en.png";
+import FlagDE from "../../assets/flags/flag-de.png";
+import FlagUK from "../../assets/flags/flag-uk.png";
 import useLocalStorage from "../../hooks/useLocalStorage";
 
 const NavigationLanguage = () => {
@@ -28,7 +28,7 @@ const NavigationLanguage = () => {
         className="w-[34px] h-[34px]"
         children={(
           <img 
-            src={language === 'de' ? LangDE : LangEN} 
+            src={language === 'de' ? FlagDE : FlagUK} 
             className="w-[22px] h-[22px] rounded-full" 
           />
         )}
@@ -42,7 +42,7 @@ const NavigationLanguage = () => {
         <MenuItem onClick={() => handleChangeLanguage('de')}>
           <ListItemIcon>
             <img 
-              src={LangDE} 
+              src={FlagDE} 
               alt="Germany flag" 
               className="h-[24px] w-[24px] rounded-full"
             />
@@ -53,7 +53,7 @@ const NavigationLanguage = () => {
         <MenuItem onClick={() => handleChangeLanguage('en')}>
           <ListItemIcon>
             <img 
-              src={LangEN} 
+              src={FlagUK} 
               alt="United kingdom flag" 
               className="h-[24px] w-[24px] rounded-full"
             />

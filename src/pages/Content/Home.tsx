@@ -1,20 +1,20 @@
 import { Divider, Typography } from "@mui/material";
-import Photo from "../../assets/photo.jpg";
-import GitHubLogo from "../../assets/github.png"
-import LinkedInLogo from "../../assets/linkedin.png"
-import XingLogo from "../../assets/xing.png"
+import GitHubLogo from "../../assets/icons/github.png";
+import LinkedInLogo from "../../assets/icons/linkedin.png";
+import XingLogo from "../../assets/icons/xing.png";
 import TypeWriter from "../../components/Miscellaneous/TypeWriter";
-import useLocalStorage from "../../hooks/useLocalStorage";
+import GrinWaveLaptop from "../../assets/bitmoji/grin-wave-laptop.png";
+import useTextForCurrentLanguage from "../../hooks/useTextForCurrentLanguage";
 
 const Home = () => {
-  const { language } = useLocalStorage();
+  // const { language } = useLocalStorage();
 
   return (
     <div className="h-full w-full flex items-center justify-center gap-[10%] max-lg:flex-col">
       <img 
-        src={Photo}
+        src={GrinWaveLaptop}
         alt="profilepicture"
-        className="h-auto w-[400px] aspect-square object-cover object-[50%,30%] rounded-full scale-x-[-1] shadow-2xl"
+        className="h-auto w-[350px] aspect-square duration-300"
       />
       <div className="h-auto w-[600px] max-w-full flex flex-col gap-4 p-4 bg-[#212224]/30 backdrop-blur-sm shadow-2xl rounded-[10px] ring-1 duration-200 ring-black/5 hover:ring-blue-800/30">
         <div className="flex items-baseline gap-4">
@@ -28,7 +28,13 @@ const Home = () => {
         </div>
         <Divider className="bg-white/75" />
         <div className="flex-1">
-          <Typography>{ language === 'de' ? "Junior Softwareentwickler mit Schwerpunkt in Fullstack Webentwicklung. 👨🏻‍💻" : "Junior Softwareengineer with main focus in fullstack web-development." }</Typography>
+          {/* <Typography>{ language === 'de' ? "Junior Softwareentwickler mit Schwerpunkt in Fullstack Webentwicklung. 👨🏻‍💻" : "Junior Softwareengineer with main focus in fullstack web-development." }</Typography> */}
+          <Typography
+            children={useTextForCurrentLanguage([
+              { lang: 'de', text: 'hallo' },
+              { lang: 'en', text: 'hello' }
+            ])}
+          />
         </div>
         <Divider className="bg-white/75" />
         <div className="flex gap-4">
