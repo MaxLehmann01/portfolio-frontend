@@ -39,7 +39,7 @@ const TypeWriter = ({ strings }: tTypeWriter) => {
     <Typography
       variant="h4"
       fontWeight={300}
-      className="overflow-hidden whitespace-nowrap font-mono"
+      className="min-w-[200px] overflow-hidden whitespace-nowrap font-mono"
     >
       { currentText }
       <span className="animate-blink">|</span>

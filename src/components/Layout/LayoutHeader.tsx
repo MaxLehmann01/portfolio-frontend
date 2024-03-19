@@ -1,10 +1,12 @@
 import { Code, EmojiPeople, Forum, Language, MenuRounded, School } from "@mui/icons-material";
-import NavigationButton from "../Navigation/NavigationButton";
-import NavigationLanguage from "../Navigation/NavigationLanguage";
 import { Divider, IconButton, ListItemIcon, ListItemText, Menu, MenuItem } from "@mui/material";
 import { useState } from "react";
+import NavigationButton from "../Navigation/NavigationButton";
+import NavigationLanguage from "../Navigation/NavigationLanguage";
+import { useNavigate } from "react-router-dom";
 
 const LayoutHeader = () => {
+  const navigate = useNavigate();
   const [ menuAnchorElement, setMenuAnchorElement ] = useState<HTMLElement | null>(null);
 
   const handleMenuOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -13,6 +15,11 @@ const LayoutHeader = () => {
 
   const handleMenuClose = () => {
     setMenuAnchorElement(null);
+  }
+
+  const handleNavigate = (destination: string) => {
+    handleMenuClose();
+    navigate(destination);
   }
   
   return (
@@ -54,25 +61,25 @@ const LayoutHeader = () => {
             anchorEl={menuAnchorElement} 
             onClose={handleMenuClose}
           >
-          <MenuItem>
+          <MenuItem onClick={() => handleNavigate('/projects')}>
             <ListItemIcon>
               <Code className="text-white" fontSize="small" />
             </ListItemIcon>
             <ListItemText>Projects</ListItemText>
           </MenuItem>
-          <MenuItem>
+          <MenuItem onClick={() => handleNavigate('/toolbox')}>
             <ListItemIcon>
               <School className="text-white" fontSize="small" />
             </ListItemIcon>
             <ListItemText>Toolbox</ListItemText>
           </MenuItem>
-          <MenuItem>
+          <MenuItem onClick={() => handleNavigate('/about')}>
             <ListItemIcon>
               <EmojiPeople className="text-white" fontSize="small" />
             </ListItemIcon>
             <ListItemText>About</ListItemText>
           </MenuItem>
-          <MenuItem>
+          <MenuItem onClick={() => handleNavigate('/contact')}>
             <ListItemIcon>
               <Forum className="text-white" fontSize="small" />
             </ListItemIcon>

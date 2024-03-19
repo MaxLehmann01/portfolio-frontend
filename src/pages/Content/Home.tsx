@@ -10,29 +10,35 @@ const Home = () => {
   // const { language } = useLocalStorage();
 
   return (
-    <div className="h-full w-full flex items-center justify-center gap-[10%] max-lg:flex-col">
+    <div className="lg:h-full w-full flex items-center justify-center gap-[10%] max-lg:flex-col">
       <img 
         src={GrinWaveLaptop}
         alt="profilepicture"
         className="h-auto w-[350px] aspect-square duration-300"
       />
       <div className="h-auto w-[600px] max-w-full flex flex-col gap-4 p-4 bg-[#212224]/30 backdrop-blur-sm shadow-2xl rounded-[10px] ring-1 duration-200 ring-black/5 hover:ring-blue-800/30">
-        <div className="flex items-baseline gap-4">
+        <div className="flex items-baseline gap-4 flex-wrap">
           <Typography 
             variant="h2" 
-            fontWeight={300}
+            fontWeight={200} 
           >
-            Hi! 👋
+            {useTextForCurrentLanguage([
+              { lang: 'de', text: 'Mein Name ist' },
+              { lang: 'en', text: 'My name is' }
+            ])}
+            &nbsp;
+            <span className="font-[300]">Max 👋</span>
           </Typography>
           <TypeWriter strings={[ 'node.js', 'React', 'TailwindCSS', 'Docker', 'express.js' ]} />
         </div>
         <Divider className="bg-white/75" />
         <div className="flex-1">
-          {/* <Typography>{ language === 'de' ? "Junior Softwareentwickler mit Schwerpunkt in Fullstack Webentwicklung. 👨🏻‍💻" : "Junior Softwareengineer with main focus in fullstack web-development." }</Typography> */}
           <Typography
+            variant="body1"
+            fontWeight={200}
             children={useTextForCurrentLanguage([
-              { lang: 'de', text: 'hallo' },
-              { lang: 'en', text: 'hello' }
+              { lang: 'de', text: 'Junior Softwareentwickler aus Nordrhein-Westfalen, Deutschland, mit einer Spezialisierung auf Fullstack-Webentwicklung. 🧑‍💻' },
+              { lang: 'en', text: 'Junior Software Developer from North Rhine-Westphalia, Germany, specializing in Fullstack Web Development. 🧑‍💻' }
             ])}
           />
         </div>
