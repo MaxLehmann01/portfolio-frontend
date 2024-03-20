@@ -28,12 +28,6 @@ div#navigation-scroll::-webkit-scrollbar-track {
   --scrollbar-track-background: #09080D;
 }
 
-[data-theme="dark"] {
-  --scrollbar-thumb-background: #2c2b30;
-  --scrollbar-thumb-background-hover: #4c4b50;
-  --scrollbar-track-background: #09080D;
-}
-
 ::-webkit-scrollbar-thumb {
   background: var(--scrollbar-thumb-background);
 }
@@ -43,5 +37,6 @@ div#navigation-scroll::-webkit-scrollbar-track {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--scrollbar-track-background);
+  /* background: var(--scrollbar-track-background); */
+  background: transparent !important;
 }

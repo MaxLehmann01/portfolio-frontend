@@ -24,7 +24,7 @@ const greyColors = {
 const Palette = () => ({
   background: {
     default: "rgb(25, 22, 43)",
-    paper: "#0c091d",
+    paper: "#0f0e18",
   },
   text: {
     primary: "#fdfdfd",

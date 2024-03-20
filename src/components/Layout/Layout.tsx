@@ -11,9 +11,9 @@ const Layout = () => {
   return (
     <div className="h-full w-full flex flex-col">
       <LayoutHeader />
-      <div className="h-auto w-full flex-1 relative flex flex-col">
+      <div className="h-auto w-full flex-1 relative flex flex-col overflow-hidden">
         <LayoutBackground />
-        <div className="h-auto w-full flex-1 z-10">
+        <div className="h-auto w-full flex-1 z-10 py-[10%] px-[10%] overflow-y-auto">
           <Outlet />
         </div>
         <LayoutFooter />
