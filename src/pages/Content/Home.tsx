@@ -1,10 +1,11 @@
 import { Divider, Typography } from "@mui/material";
-import GitHubLogo from "../../assets/icons/github.png";
-import LinkedInLogo from "../../assets/icons/linkedin.png";
-import XingLogo from "../../assets/icons/xing.png";
+import GitHubIcon from "../../assets/icons/github.png";
+import LinkedInIcon from "../../assets/icons/linkedin.png";
+import XingIcon from "../../assets/icons/xing.png";
 import TypeWriter from "../../components/Miscellaneous/TypeWriter";
 import GrinWaveLaptop from "../../assets/bitmoji/grin-wave-laptop.png";
 import useTextForCurrentLanguage from "../../hooks/useTextForCurrentLanguage";
+import Card from "../../components/Miscellaneous/Card";
 
 const Home = () => {
   // const { language } = useLocalStorage();
@@ -16,15 +17,15 @@ const Home = () => {
         alt="profilepicture"
         className="h-auto w-[350px] aspect-square duration-300"
       />
-      <div className="h-auto w-[600px] max-w-full flex flex-col gap-4 p-4 bg-[#212224]/30 backdrop-blur-sm shadow-2xl rounded-[10px] ring-1 duration-200 ring-black/5 hover:ring-blue-800/30">
+      <Card className="h-auto w-[600px] max-w-full">
         <div className="flex items-baseline gap-4 flex-wrap">
           <Typography 
             variant="h2" 
             fontWeight={200} 
           >
             {useTextForCurrentLanguage([
-              { lang: 'de', text: 'Mein Name ist' },
-              { lang: 'en', text: 'My name is' }
+              { lang: 'en', text: 'My name is' },
+              { lang: 'de', text: 'Mein Name ist' }
             ])}
             &nbsp;
             <span className="font-[300]">Max 👋</span>
@@ -37,8 +38,8 @@ const Home = () => {
             variant="body1"
             fontWeight={200}
             children={useTextForCurrentLanguage([
-              { lang: 'de', text: 'Junior Softwareentwickler aus Nordrhein-Westfalen, Deutschland, mit einer Spezialisierung auf Fullstack-Webentwicklung. 🧑‍💻' },
-              { lang: 'en', text: 'Junior Software Developer from North Rhine-Westphalia, Germany, specializing in Fullstack Web Development. 🧑‍💻' }
+              { lang: 'en', text: 'Junior Software Developer from North Rhine-Westphalia, Germany, specializing in Fullstack Web Development. 🧑‍💻' },
+              { lang: 'de', text: 'Junior Softwareentwickler aus Nordrhein-Westfalen, Deutschland, mit einer Spezialisierung auf Fullstack-Webentwicklung. 🧑‍💻' }
             ])}
           />
         </div>
@@ -50,7 +51,7 @@ const Home = () => {
             className="drop-shadow-xl"
           >
             <img 
-              src={GitHubLogo} 
+              src={GitHubIcon} 
               alt="GitHub Profile"
               className="h-auto w-[40px] aspect-square rounded-full duration-200 hover:scale-110"
             />
@@ -61,7 +62,7 @@ const Home = () => {
             className="drop-shadow-xl"
           >
             <img 
-              src={LinkedInLogo} 
+              src={LinkedInIcon} 
               alt="GitHub Profile"
               className="h-auto w-[40px] aspect-square rounded-full duration-200 hover:scale-110"
             />
@@ -72,13 +73,13 @@ const Home = () => {
             className="drop-shadow-xl"
           >
             <img 
-              src={XingLogo} 
+              src={XingIcon} 
               alt="GitHub Profile"
               className="h-auto w-[40px] aspect-square rounded-full duration-200 hover:scale-110"
             />
           </a>
         </div>
-      </div>
+      </Card>
     </div>
   )
 }

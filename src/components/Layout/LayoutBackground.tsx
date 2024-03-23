@@ -1,17 +1,18 @@
-import { Container, ISourceOptions } from "@tsparticles/engine";
+import { ISourceOptions } from "@tsparticles/engine";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import particlesJSConfig from "../../assets/particles.js.json";
+
+const ParticlesComponent = memo(({ options }: { options: ISourceOptions}) => (
+  <Particles
+    id="tsparticles"
+    options={options}
+  />
+));
 
 const LayoutBackground = () => {
   const [ init, setInit ] = useState<boolean>(false);
-
-  const particlesLoaded = async (container?: Container): Promise<void> => {
-    console.log(container);
-  };
-
-  // const options: ISourceOptions = useMemo(() => particlesJSConfig, [])
 
   useEffect(() => {
     initParticlesEngine(async (engine) => {
@@ -21,15 +22,13 @@ const LayoutBackground = () => {
     });
   }, []);
 
-  if (init) return (
-    <Particles
-      id="tsparticles"
-      particlesLoaded={particlesLoaded}
+  if(!init) return null;
+
+  return (
+    <ParticlesComponent
       options={particlesJSConfig as ISourceOptions}
     />
   );
-
-  return <></>;
 }
 
 export default LayoutBackground;

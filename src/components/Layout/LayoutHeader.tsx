@@ -1,9 +1,10 @@
-import { Code, EmojiPeople, Forum, Language, MenuRounded, School } from "@mui/icons-material";
+import { Code, EmojiPeople, Forum, MenuRounded, School } from "@mui/icons-material";
 import { Divider, IconButton, ListItemIcon, ListItemText, Menu, MenuItem } from "@mui/material";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import useTextForCurrentLanguage from "../../hooks/useTextForCurrentLanguage";
 import NavigationButton from "../Navigation/NavigationButton";
 import NavigationLanguage from "../Navigation/NavigationLanguage";
-import { useNavigate } from "react-router-dom";
 
 const LayoutHeader = () => {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ const LayoutHeader = () => {
       />
       <div className="flex-1 justify-end items-center gap-8 hidden lg:flex">
         <NavigationButton
-          title="Projects"
+          title={useTextForCurrentLanguage([ { lang: 'en', 'text': 'Projects' }, { lang: 'de', 'text': 'Projekte' } ])}
           destination="/projects"
           icon={Code}
         />
@@ -40,12 +41,12 @@ const LayoutHeader = () => {
           icon={School}
         />
         <NavigationButton
-          title="About"
+          title={useTextForCurrentLanguage([ { lang: 'en', 'text': 'About me' }, { lang: 'de', 'text': 'Über mich' } ])}
           destination="/about"
           icon={EmojiPeople}
         />
         <NavigationButton
-          title="Contact"
+          title={useTextForCurrentLanguage([ { lang: 'en', 'text': 'Contact' }, { lang: 'de', 'text': 'Kontakt' } ])}
           destination="/contact"
           icon={Forum}
         />
@@ -86,11 +87,8 @@ const LayoutHeader = () => {
             <ListItemText>Contact</ListItemText>
           </MenuItem>
           <Divider />
-          <MenuItem>
-            <ListItemIcon>
-              <Language className="text-white" fontSize="small" />
-            </ListItemIcon>
-            <ListItemText>Language</ListItemText>
+          <MenuItem className="flex justify-center p-0">
+            <NavigationLanguage />
           </MenuItem>
         </Menu>
       </div>
