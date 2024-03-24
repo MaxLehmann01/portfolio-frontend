@@ -1,67 +1,60 @@
-import { Divider, IconButton, ListItemIcon, ListItemText, Menu, MenuItem } from "@mui/material";
-import { useState } from "react";
+import { styled, Switch, Tooltip } from "@mui/material";
 import FlagDE from "../../assets/flags/flag-de.png";
 import FlagUK from "../../assets/flags/flag-uk.png";
 import useLocalStorage from "../../hooks/useLocalStorage";
 
+const StyledLanguageSwitch = styled(Switch)(() => ({
+  '& .MuiSwitch-switchBase': {
+    margin: 1,
+    padding: 0,
+    transform: 'translate(8px, 6px)',
+    '&.Mui-checked': {
+      transform: 'translate(24px, 6px)',
+      '& .MuiSwitch-thumb:before': {
+        backgroundImage: `url(${FlagUK})`,
+      },
+      '& + .MuiSwitch-track': {
+        opacity: 1,
+        backgroundColor: '#0e0c19',
+      },
+    }
+  },
+  '& .MuiSwitch-thumb': {
+    height: 24,
+    width: 24,
+    '&::before': {
+      content: "''",
+      position: 'absolute',
+      height: '100%',
+      width: '100%',
+      left: 0,
+      top: 0,
+      borderRadius: '100%',
+      backgroundPosition: 'center',
+      backgroundSize: 'cover',
+      backgroundImage: `url(${FlagDE})`,
+    }
+  },
+  '& .MuiSwitch-track': {
+    opacity: 1,
+    backgroundColor: '#0e0c19',
+  },
+}));
+
 const NavigationLanguage = () => {
   const { language, changeLanguage } = useLocalStorage();
-  const [ menuAnchorElement, setMenuAnchorElement ] = useState<HTMLElement | null>(null);
-
-  const handleMenuOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setMenuAnchorElement(event.currentTarget);
-  }
-
-  const handleMenuClose = () => {
-    setMenuAnchorElement(null);
-  }
 
   const handleChangeLanguage = (language: 'en' | 'de') => {
     changeLanguage(language);
-    handleMenuClose();
   }
 
   return (
-    <>
-     <IconButton
-        size="small"
-        className="w-[34px] h-[34px]"
-        children={(
-          <img 
-            src={language === 'de' ? FlagDE : FlagUK} 
-            className="w-[22px] h-[22px] rounded-full" 
-          />
-        )}
-        onClick={handleMenuOpen}
+    <Tooltip title={language === 'de' ? 'Auf Englisch wechseln' : 'Change to German'}>
+      <StyledLanguageSwitch
+        checked={language === 'en'}
+        onChange={() => handleChangeLanguage(language === 'en' ? 'de' : 'en')}
       />
-      <Menu
-        open={Boolean(menuAnchorElement)} 
-        anchorEl={menuAnchorElement} 
-        onClose={handleMenuClose}
-      >
-        <MenuItem onClick={() => handleChangeLanguage('de')}>
-          <ListItemIcon>
-            <img 
-              src={FlagDE} 
-              alt="Germany flag" 
-              className="h-[24px] w-[24px] rounded-full"
-            />
-          </ListItemIcon>
-          <ListItemText>German</ListItemText>
-        </MenuItem>
-        <Divider className="bg-[#121315]" />
-        <MenuItem onClick={() => handleChangeLanguage('en')}>
-          <ListItemIcon>
-            <img 
-              src={FlagUK} 
-              alt="United kingdom flag" 
-              className="h-[24px] w-[24px] rounded-full"
-            />
-          </ListItemIcon>
-          <ListItemText>English</ListItemText>
-        </MenuItem>
-      </Menu>
-    </>
+    </Tooltip>
   )
 }
 
