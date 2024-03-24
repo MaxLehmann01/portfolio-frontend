@@ -37,7 +37,7 @@ const Contact = () => {
     if(formName.trim() === '' || formEmail.trim() === '' || formSubject.trim() === '' || formMessage.trim() === '') return;
     
     try {
-      const response = API.post('');
+      API.post('');
       setAlert({ severity: 'success', children: language === 'de' ? 'Das Formular wurde erfolgreich abgeschickt!' : 'The form was successfully submitted!'})
     } catch (err) {
       const error = err as AxiosError;
