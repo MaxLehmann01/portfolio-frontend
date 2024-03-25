@@ -26,8 +26,6 @@ const Contact = () => {
   const [ formMessage, setFormMessage ] = useState<string>('');
   const [ formMessageError, setFormMessageError ] = useState<boolean>(false);
 
-
-
   const handleSendForm = async () => {
     if(formName.trim() === '') setFormNameError(true);
     if(formEmail.trim() === '') setFormEmailError(true);
@@ -37,7 +35,7 @@ const Contact = () => {
     if(formName.trim() === '' || formEmail.trim() === '' || formSubject.trim() === '' || formMessage.trim() === '') return;
     
     try {
-      API.post('');
+      await API.post('/contact', { name: formName, email: formEmail, subject: formSubject, message: formMessage }, { withCredentials: true });
       setAlert({ severity: 'success', children: language === 'de' ? 'Das Formular wurde erfolgreich abgeschickt!' : 'The form was successfully submitted!'})
     } catch (err) {
       const error = err as AxiosError;
@@ -46,7 +44,7 @@ const Contact = () => {
   }
 
   return (
-    <div className="h-full w-full flex items-center justify-center gap-[10%] max-lg:flex-col">
+    <div className="lg:h-full w-full flex items-center justify-center gap-[10%] max-lg:flex-col">
       <Card className="h-auto w-2/3 max-lg:w-full">
         <div className="flex items-baseline gap-4 flex-wrap">
           <Typography 
