@@ -15,7 +15,7 @@ const StyledLanguageSwitch = styled(Switch)(() => ({
       },
       '& + .MuiSwitch-track': {
         opacity: 1,
-        backgroundColor: '#0e0c19',
+        backgroundColor: '#25223d',
       },
     }
   },
@@ -37,7 +37,7 @@ const StyledLanguageSwitch = styled(Switch)(() => ({
   },
   '& .MuiSwitch-track': {
     opacity: 1,
-    backgroundColor: '#0e0c19',
+    backgroundColor: '#25223d',
   },
 }));
 

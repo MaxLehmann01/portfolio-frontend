@@ -66,7 +66,7 @@ const LayoutHeader = () => {
             <ListItemIcon>
               <Code className="text-white" fontSize="small" />
             </ListItemIcon>
-            <ListItemText>Projects</ListItemText>
+            <ListItemText>{useTextForCurrentLanguage([ { lang: 'en', 'text': 'Projects' }, { lang: 'de', 'text': 'Projekte' } ])}</ListItemText>
           </MenuItem>
           <MenuItem onClick={() => handleNavigate('/toolbox')}>
             <ListItemIcon>
@@ -78,13 +78,13 @@ const LayoutHeader = () => {
             <ListItemIcon>
               <EmojiPeople className="text-white" fontSize="small" />
             </ListItemIcon>
-            <ListItemText>About</ListItemText>
+            <ListItemText>{useTextForCurrentLanguage([ { lang: 'en', 'text': 'About me' }, { lang: 'de', 'text': 'Über mich' } ])}</ListItemText>
           </MenuItem>
           <MenuItem onClick={() => handleNavigate('/contact')}>
             <ListItemIcon>
               <Forum className="text-white" fontSize="small" />
             </ListItemIcon>
-            <ListItemText>Contact</ListItemText>
+            <ListItemText>{useTextForCurrentLanguage([ { lang: 'en', 'text': 'Contact' }, { lang: 'de', 'text': 'Kontakt' } ])}</ListItemText>
           </MenuItem>
           <Divider />
           <MenuItem className="flex justify-center p-0">
