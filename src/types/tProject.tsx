@@ -4,8 +4,20 @@ export type tProject = {
     lang: 'en' | 'de',
     content: string
   }[],
-  repositories: string[],
+  repositories: {
+    name: string,
+    url: string
+  }[],
+  banner: string,
   version: string,
-  urls: string[],
+  urls: {
+    name: string,
+    url: string
+  }[],
+  techs: {
+    name: string,
+    icon: string,
+    url: string
+  }[]
   timestamp: string
 }
