@@ -1,9 +1,9 @@
 version: '3'
 
 services:
-  production.portfolio-frontend:
-    container_name: production.portfolio-frontend
-    image: docker.5vv5404h4uiv.com/portfolio-frontend:production
+  portfolio-frontend:
+    container_name: portfolio-frontend
+    image: maxlehmann01/portfolio-frontend:production
     ports:
-      - "5000:80"
+      - "4000:80"
     restart: always
