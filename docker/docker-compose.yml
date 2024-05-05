@@ -3,7 +3,7 @@ version: '3'
 services:
   portfolio-frontend:
     container_name: portfolio-frontend
-    image: maxlehmann01/portfolio-frontend:production
+    image: maxlehmann01/portfolio-frontend:latest
     ports:
       - "4000:80"
     restart: always
