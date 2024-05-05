@@ -22,7 +22,7 @@ const Projects = () => {
   const [ dialogProjectSoftwareStack, setDialogProjectSoftwareStack ] = useState<tProject | null>(null);
 
   const [showTopArrow, setShowTopArrow] = useState<boolean>(false);
-  const [showBottomArrow, setShowBottomArrow] = useState<boolean>(true);
+  const [showBottomArrow, setShowBottomArrow] = useState<boolean>(false);
 
   const handleOpenDialogProjectSoftwareStack = useCallback((project: tProject) => setDialogProjectSoftwareStack(project), []);
 
@@ -80,6 +80,13 @@ const Projects = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [])
 
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      setShowBottomArrow(container.scrollHeight > container.clientHeight);
+    }
+  }, [projects]);
+
    useEffect(() => {
     const handleScroll = () => {
       const container = scrollContainerRef.current;
@@ -109,7 +116,6 @@ const Projects = () => {
     <>
       <div className="h-full w-full flex items-center justify-center relative">
         {showTopArrow && (
-          // <div className="h-[40px] w-[40px] bg-red-100 absolute left-1/2 top-0 translate-x-[-50%]">test</div>
           <IconButton
             className="absolute left-1/2 top-0 translate-x-[-50%] text-white"
             size="small"
