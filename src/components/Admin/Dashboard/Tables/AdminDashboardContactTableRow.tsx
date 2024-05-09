@@ -1,5 +1,6 @@
 import { TableCell, TableRow } from "@mui/material";
 import { tContact } from "../../../../types/tContact";
+import ConvertTimestampToDE from "../../../../utils/ConvertTimestampToDE";
 
 type tAdminDashboardContactTableRowProps = {
   contact: tContact
@@ -12,7 +13,7 @@ const AdminDashboardContactTableRow = ({ contact }: tAdminDashboardContactTableR
       <TableCell>{contact.email}</TableCell>
       <TableCell>{contact.subject}</TableCell>
       <TableCell>{contact.message}</TableCell>
-      <TableCell>{contact.timestamp}</TableCell>
+      <TableCell>{ConvertTimestampToDE(contact.timestamp as string)}</TableCell>
     </TableRow>
   )
 }

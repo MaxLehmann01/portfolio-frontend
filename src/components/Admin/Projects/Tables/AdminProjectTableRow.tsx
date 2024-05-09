@@ -3,6 +3,7 @@ import { IconButton, TableCell, TableRow, Tooltip } from "@mui/material";
 import { useContext } from "react";
 import { tProject } from "../../../../types/tProject";
 import AdminProjectTableContext from "../Contexts/AdminProjectTableContext";
+import ConvertTimestampToDE from "../../../../utils/ConvertTimestampToDE";
 
 type tAdminProjectTableRowProps = {
   project: tProject
@@ -18,7 +19,7 @@ const AdminProjectTableRow = ({ project }: tAdminProjectTableRowProps) => {
     <TableRow>
       <TableCell>{project.name}</TableCell>
       <TableCell>{project.version}</TableCell>
-      <TableCell>{project.timestamp}</TableCell>
+      <TableCell>{ConvertTimestampToDE(project.timestamp as string)}</TableCell>
       <TableCell className="flex gap-4">
         <Tooltip 
           title="Edit"
