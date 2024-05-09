@@ -2,15 +2,18 @@ import { useState } from "react"
 import { tAlert } from "../types/tAlert"
 import AlertContext from "../contexts/AlertContext"
 
-type tAlertProvider = {
+type tAlertProviderProps = {
   children: React.ReactNode
 }
 
-const AlertProvider = ({ children }: tAlertProvider) => {
+const AlertProvider = ({ children }: tAlertProviderProps) => {
   const [ alert, setAlert ] = useState<tAlert | null>(null);
 
   return (
-    <AlertContext.Provider value={{ alert, setAlert }}>{ children }</AlertContext.Provider>
+    <AlertContext.Provider 
+      value={{ alert, setAlert }}
+      children={children}
+    />
   )
 }
 

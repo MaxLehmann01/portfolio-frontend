@@ -1,6 +1,6 @@
 import { Tooltip } from "@mui/material";
 
-type tImageButton = {
+type tImageButtonProps = {
   href: string,
   image: string,
   title: string,
@@ -8,7 +8,7 @@ type tImageButton = {
   tooltip?: boolean
 }
 
-const ImageButton = ({ href, image, title, className, tooltip }: tImageButton) => {
+const ImageButton = ({ href, image, title, className, tooltip }: tImageButtonProps) => {
 
   if(tooltip) {
     return (

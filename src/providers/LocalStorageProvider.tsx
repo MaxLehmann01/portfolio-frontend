@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import LocalStorageContext from "../contexts/LocalStorageContext";
 
-type tLocalStorageProvider = {
+type tLocalStorageProviderProps = {
   children: React.ReactNode
 }
 
@@ -15,7 +15,7 @@ const getLanguage = (): 'en' | 'de' => {
   return 'en';
 }
 
-const LocalStorageProvider = ({ children }: tLocalStorageProvider) => {
+const LocalStorageProvider = ({ children }: tLocalStorageProviderProps) => {
   const [ language, setLanguage ] = useState<'en' | 'de'>(getLanguage());
 
   const changeLanguage = (language: 'en' | 'de') => {
@@ -28,7 +28,10 @@ const LocalStorageProvider = ({ children }: tLocalStorageProvider) => {
   }, [])
 
   return (
-    <LocalStorageContext.Provider value={{ language, changeLanguage }}>{children}</LocalStorageContext.Provider>
+    <LocalStorageContext.Provider 
+      value={{ language, changeLanguage }}
+      children={children}  
+    />
   )
 }
 

@@ -4,12 +4,13 @@ import AlertProvider from "./providers/AlertProvider"
 import LocalStorageProvider from "./providers/LocalStorageProvider"
 import API from "./utils/API"
 import { useCallback, useEffect } from "react"
+import AuthProvider from "./providers/AuthProvider"
 
 const App = () => {
 
   const handleSendWebsiteVisit = useCallback(async () => {
     try {
-      await API.post('/', { path: window.location.pathname });
+      await API.post('/visits', { path: window.location.pathname });
     } catch (err) {
       console.error(err);
     }
@@ -22,11 +23,13 @@ const App = () => {
   
   return (
     <BrowserRouter>
-      <LocalStorageProvider>
-        <AlertProvider>
-          <Router />
-        </AlertProvider>
-      </LocalStorageProvider>
+      <AuthProvider>
+        <LocalStorageProvider>
+          <AlertProvider>
+            <Router />
+          </AlertProvider>
+        </LocalStorageProvider>
+      </AuthProvider>
     </BrowserRouter>
   )
 }

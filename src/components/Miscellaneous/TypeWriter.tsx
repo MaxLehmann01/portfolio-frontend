@@ -1,11 +1,11 @@
 import { Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 
-type tTypeWriter = {
+type tTypeWriterProps = {
   strings: string[]
 }
 
-const TypeWriter = ({ strings }: tTypeWriter) => {
+const TypeWriter = ({ strings }: tTypeWriterProps) => {
   const [ currentIndex, setCurrentIndex ] = useState(0);
   const [ currentText, setCurrentText ] = useState('');
   const [ isDeleting, setIsDeleting ] = useState(false);

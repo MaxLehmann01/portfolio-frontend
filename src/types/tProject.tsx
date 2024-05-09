@@ -1,23 +1,23 @@
+import { tFile } from "./tFile"
+import { tTech } from "./tTech"
+
 export type tProject = {
+  _id?: string,
   name: string,
   descriptions: {
-    lang: 'en' | 'de',
-    content: string
-  }[],
+    en: string,
+    de: string
+  },
   repositories: {
     name: string,
     url: string
   }[],
-  banner: string,
+  banner?: tFile,
   version: string,
   urls: {
     name: string,
     url: string
   }[],
-  techs: {
-    name: string,
-    icon: string,
-    url: string
-  }[]
-  timestamp: string
+  techs: tTech[],
+  timestamp?: string
 }
