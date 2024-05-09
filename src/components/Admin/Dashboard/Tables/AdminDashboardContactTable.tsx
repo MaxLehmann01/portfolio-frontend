@@ -10,7 +10,7 @@ type tAdminDashboardContactTableProps = {
 
 const AdminDashboardContactTable = memo(({ contacts }: tAdminDashboardContactTableProps) => {
   const [ page, setPage ] = useState<number>(0);
-  const [ rowsPerPage, setRowsPerPage ] = useState<number>(5);
+  const [ rowsPerPage, setRowsPerPage ] = useState<number>(10);
 
   const startIndex = page * rowsPerPage;
   const endIndex = startIndex + rowsPerPage;
