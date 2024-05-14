@@ -173,33 +173,37 @@ const ContentProjects = () => {
                   />
                 </div>
               </div>
-              <Divider className="bg-white/75" />
-              <div className="flex justify-between">
-                <div className="flex gap-4">
-                  {project.repositories.map((repository, index) => (
-                    <ImageButton
-                      key={index}
-                      href={repository.url}
-                      image={GitHubIcon} 
-                      title={repository.name}
-                      className="w-[36px]"
-                      tooltip
-                    />
-                  ))}
-                </div>
-                <div className="flex gap-4">
-                  {project.urls.map((url, index) => (
-                    <ImageButton
-                      key={index}
-                      href={url.url}
-                      image={WebsiteIcon} 
-                      title={url.name}
-                      className="w-[36px]"
-                      tooltip
-                    />
-                  ))}
-                </div>
-              </div>
+              {(project.repositories.length > 0 || project.urls.length > 0) && (
+                <>
+                  <Divider className="bg-white/75" />
+                  <div className="flex justify-between">
+                    <div className="flex gap-4">
+                      {project.repositories.map((repository, index) => (
+                        <ImageButton
+                          key={index}
+                          href={repository.url}
+                          image={GitHubIcon} 
+                          title={repository.name}
+                          className="w-[36px]"
+                          tooltip
+                        />
+                      ))}
+                    </div>
+                    <div className="flex gap-4">
+                      {project.urls.map((url, index) => (
+                        <ImageButton
+                          key={index}
+                          href={url.url}
+                          image={WebsiteIcon} 
+                          title={url.name}
+                          className="w-[36px]"
+                          tooltip
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </>
+              )}
             </Card>
           ))}
         </div>
