@@ -1,4 +1,4 @@
-name: Docker-Build-And-Deploy
+name: Build-And-Deploy
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build-app:
+  build-app: 
     runs-on: self-hosted
     steps:
       - name: Checkout repository
@@ -15,7 +15,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '20'
+          node-version: '20' # Specify the Node.js version you want to use
 
       - name: Install dependencies
         run: npm install
@@ -42,20 +42,21 @@ jobs:
           name: dist
           path: ./dist/
 
-      - name: Login to Docker Hub
+      - name: Log in to Private Registry
         uses: docker/login-action@v1
         with:
+          registry: ${{ secrets.DOCKER_REGISTRY_URI }}
           username: ${{ secrets.DOCKER_REGISTRY_USER }}
           password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
-
+      
       - name: Build and Push Docker image
         uses: docker/build-push-action@v2
         with: 
           context: .
           file: ./docker/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_REGISTRY_USER }}/portfolio-frontend:latest
-    
+          tags: ${{ secrets.DOCKER_REGISTRY_URI }}/portfolio-frontend:latest
+
   deploy-image:
     needs: build-image
     runs-on: self-hosted
@@ -63,8 +64,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Copy docker-compose.yml
-        run: cp ./docker/docker-compose.yml ~/deployment/portfolio/frontend
+      - name: Copy docker-Compose.yml
+        run: scp -o StrictHostKeyChecking=no ./docker/docker-compose.yml root@${{ secrets.SSH_IP }}:~/portfolio/frontend
 
       - name: Run docker-compose.yml
-        run: cd ~/deployment/portfolio/frontend && docker-compose pull && docker-compose up -d
+        run: ssh -o StrictHostKeyChecking=no root@${{ secrets.SSH_IP }} "cd ~/portfolio/frontend && docker-compose pull && docker-compose up -d"

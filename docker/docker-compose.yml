@@ -2,8 +2,8 @@ version: '3'
 
 services:
   portfolio-frontend:
+    image: docker.5vv5404h4uiv.com/portfolio-frontend:latest
     container_name: portfolio-frontend
-    image: maxlehmann01/portfolio-frontend:latest
     ports:
       - "15024:80"
     restart: always
