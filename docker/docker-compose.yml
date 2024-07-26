@@ -5,5 +5,5 @@ services:
     container_name: portfolio-frontend
     image: maxlehmann01/portfolio-frontend:latest
     ports:
-      - "4000:80"
+      - "15024:80"
     restart: always
